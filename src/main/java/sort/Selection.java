@@ -1,22 +1,25 @@
 package sort;
 
-public class Selection implements Sorting {
-    public int[] sort(int[] array) {
+import java.util.function.Predicate;
+
+public class Selection extends AbstractSort {
+    /**
+     * Используем лямбду для проверки на больше/меньше
+    * */
+    protected int[] sort(int[] array, Predicate<int[]> predicate) {
         int[] resultArray = array.clone();
-        int minIndex = 0;
-        int temp = 0;
-        int counter = 0;
+        int index, temp, counter = 0;
 
         for (; counter < resultArray.length; counter++) {
-            minIndex = counter;
+            index = counter;
             for (int i = counter; i < resultArray.length; i++) {
-                if (resultArray[minIndex] > resultArray[i]) {
-                    minIndex = i;
+                if (predicate.test(new int[]{resultArray[index], resultArray[i]})) {
+                    index = i;
                 }
             }
-            if (minIndex != counter) {
-                temp = resultArray[minIndex];
-                resultArray[minIndex] = resultArray[counter];
+            if (index != counter) {
+                temp = resultArray[index];
+                resultArray[index] = resultArray[counter];
                 resultArray[counter] = temp;
             }
         }

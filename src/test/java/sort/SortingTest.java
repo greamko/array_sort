@@ -21,25 +21,46 @@ public class SortingTest {
     public void case01() {
         int[] testArray = {4, 12, 32, 1, 8, 2, 20};
         int[] expectedArray = {1, 2, 4, 8, 12, 20, 32};
-        simpleSelectionMin(testArray, expectedArray);
+        simpleSelection(testArray, expectedArray, Order.ASK);
     }
 
     @Test
     public void case02() {
         int[] testArray = {4, -1, 32, 1, 8, -20, 20};
         int[] expectedArray = {-20, -1, 1, 4, 8, 20, 32};
-        simpleSelectionMin(testArray, expectedArray);
+        simpleSelection(testArray, expectedArray, Order.ASK);
     }
 
     @Test
     public void case03() {
         int[] testArray = {4, -1, 32, 1, 8, -20, 1, 20};
         int[] expectedArray = {-20, -1, 1, 1, 4, 8, 20, 32};
-        simpleSelectionMin(testArray, expectedArray);
+        simpleSelection(testArray, expectedArray, Order.ASK);
     }
 
-    void simpleSelectionMin(int[] testArray, int[] expectedArray) {
-        int[] resultArray = sorting.sort(testArray);
+    @Test
+    public void case04() {
+        int[] testArray = {4, 12, 32, 1, 8, 2, 20};
+        int[] expectedArray = {32, 20, 12, 8, 4, 2, 1};
+        simpleSelection(testArray, expectedArray, Order.DESK);
+    }
+
+    @Test
+    public void case05() {
+        int[] testArray = {4, -1, 32, 1, 8, -20, 20};
+        int[] expectedArray = {32, 20, 8, 4, 1, -1, -20};
+        simpleSelection(testArray, expectedArray, Order.DESK);
+    }
+
+    @Test
+    public void case06() {
+        int[] testArray = {4, -1, 32, 1, 8, -20, 1, 20};
+        int[] expectedArray = {32, 20, 8, 4, 1, 1, -1, -20};
+        simpleSelection(testArray, expectedArray, Order.DESK);
+    }
+
+    void simpleSelection(int[] testArray, int[] expectedArray, Order order) {
+        int[] resultArray = sorting.sort(testArray, order);
         Assert.assertArrayEquals(expectedArray, resultArray);
         System.out.println("in: " + Arrays.toString(testArray));
         System.out.println("out: " + Arrays.toString(expectedArray));
@@ -48,6 +69,6 @@ public class SortingTest {
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Sorting> instancesToTest() {
-        return Arrays.asList(new Selection(), new Bubble());
+        return Arrays.asList((Sorting) new Selection(), new Bubble());
     }
 }

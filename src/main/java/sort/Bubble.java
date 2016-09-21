@@ -1,14 +1,17 @@
 package sort;
 
-public class Bubble implements Sorting {
-    public int[] sort(int[] array) {
+import java.util.function.Predicate;
+
+public class Bubble extends AbstractSort {
+
+    protected int[] sort(int[] array, Predicate<int[]> predicate) {
         int[] resultArray = array.clone();
         boolean isMoved = true;
         int temp;
         while (isMoved) {
             isMoved = false;
             for (int i = 1; i < resultArray.length; i++) {
-                if (resultArray[i - 1] > resultArray[i]) {
+                if (predicate.test(new int[]{resultArray[i - 1], resultArray[i]})) {
                     temp = resultArray[i];
                     resultArray[i] = resultArray[i - 1];
                     resultArray[i - 1] = temp;
