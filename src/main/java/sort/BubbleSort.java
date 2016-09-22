@@ -2,7 +2,7 @@ package sort;
 
 import java.util.function.Predicate;
 
-public class Bubble extends AbstractSort {
+public class BubbleSort extends AbstractSort {
 
     protected int[] sort(int[] array, Predicate<int[]> predicate) {
         int[] resultArray = array.clone();

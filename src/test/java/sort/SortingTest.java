@@ -11,7 +11,7 @@ import java.util.Collection;
 @RunWith(Parameterized.class)
 public class SortingTest {
 
-    public Sorting sorting;
+    private Sorting sorting;
 
     public SortingTest(Sorting sorting) {
         this.sorting = sorting;
@@ -60,15 +60,20 @@ public class SortingTest {
     }
 
     void simpleSelection(int[] testArray, int[] expectedArray, Order order) {
-        int[] resultArray = sorting.sort(testArray, order);
-        Assert.assertArrayEquals(expectedArray, resultArray);
-        System.out.println("in: " + Arrays.toString(testArray));
-        System.out.println("out: " + Arrays.toString(expectedArray));
-        System.out.println("everything is ok");
+        try {
+            int[] resultArray = sorting.sort(testArray, order);
+            Assert.assertArrayEquals(expectedArray, resultArray);
+            System.out.println("in: " + Arrays.toString(testArray));
+            System.out.println("out: " + Arrays.toString(expectedArray));
+            System.out.println("everything is ok");
+        }
+        catch (NegativeNumberException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Sorting> instancesToTest() {
-        return Arrays.asList((Sorting) new Selection(), new Bubble());
+        return Arrays.asList((Sorting) new SelectionSort(), new BubbleSort(), new CountingSort());
     }
 }

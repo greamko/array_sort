@@ -2,7 +2,7 @@ package sort;
 
 import java.util.function.Predicate;
 
-public class Selection extends AbstractSort {
+public class SelectionSort extends AbstractSort {
     /**
      * Используем лямбду для проверки на больше/меньше
     * */

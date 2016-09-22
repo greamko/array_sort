@@ -4,7 +4,7 @@ import java.util.function.Predicate;
 
 public abstract class AbstractSort implements Sorting {
     public int[] sort(int[] array) {
-        return this.sortAsk(array);
+        return sort(array, Order.ASK);
     }
 
     public int[] sort(int[] array, Order order) {
