@@ -66,14 +66,13 @@ public class SortingTest {
             System.out.println("in: " + Arrays.toString(testArray));
             System.out.println("out: " + Arrays.toString(expectedArray));
             System.out.println("everything is ok");
-        }
-        catch (NegativeNumberException ex){
+        } catch (NegativeNumberException ex) {
             System.out.println(ex.getMessage());
         }
     }
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Sorting> instancesToTest() {
-        return Arrays.asList((Sorting) new SelectionSort(), new BubbleSort(), new CountingSort(), new RadixSort());
+        return Arrays.asList((Sorting) new SelectionSort(), new BubbleSort(), new CountingSort(), new RadixSort(), new QuickSort());
     }
 }
