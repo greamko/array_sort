@@ -4,7 +4,7 @@ import java.util.function.Predicate;
 
 public class CountingSort extends AbstractSort {
 
-
+    @Override
     protected int[] sort(int[] array, Predicate<int[]> predicate) {
         int[] resultArray = new int[array.length];
         int subArraySize = array[0];
@@ -24,10 +24,10 @@ public class CountingSort extends AbstractSort {
         for (int i = 0; i<subArraySize; i++) {
             while (subArray[i] != 0) {
                 /*по возрастанию или убыванию*/
-                if (predicate.test(new int[]{0, 1})) {
-                    resultArray[array.length - index - 1] = i;
-                } else {
+                if (order==Order.ASK) {
                     resultArray[index] = i;
+                } else {
+                    resultArray[array.length - index - 1] = i;
                 }
                 index++;
                 subArray[i]--;

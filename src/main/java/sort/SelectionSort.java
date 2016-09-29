@@ -3,9 +3,9 @@ package sort;
 import java.util.function.Predicate;
 
 public class SelectionSort extends AbstractSort {
-    /**
-     * Используем лямбду для проверки на больше/меньше
-    * */
+
+
+    @Override
     protected int[] sort(int[] array, Predicate<int[]> predicate) {
         int[] resultArray = array.clone();
         int index, temp, counter = 0;

@@ -4,6 +4,7 @@ import java.util.function.Predicate;
 
 public class BubbleSort extends AbstractSort {
 
+    @Override
     protected int[] sort(int[] array, Predicate<int[]> predicate) {
         int[] resultArray = array.clone();
         boolean isMoved = true;
