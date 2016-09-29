@@ -73,6 +73,12 @@ public class SortingTest {
 
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Sorting> instancesToTest() {
-        return Arrays.asList((Sorting) new SelectionSort(), new BubbleSort(), new CountingSort(), new RadixSort(), new QuickSort());
+        return Arrays.asList(
+                new SelectionSort(),
+                new BubbleSort(),
+                new CountingSort(),
+                new RadixSort(),
+                new QuickSort(),
+                new MergeSort());
     }
 }
