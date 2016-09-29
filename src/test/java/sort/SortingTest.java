@@ -62,9 +62,9 @@ public class SortingTest {
     void simpleSelection(int[] testArray, int[] expectedArray, Order order) {
         try {
             int[] resultArray = sorting.sort(testArray, order);
-            Assert.assertArrayEquals(expectedArray, resultArray);
             System.out.println("in: " + Arrays.toString(testArray));
-            System.out.println("out: " + Arrays.toString(expectedArray));
+            System.out.println("out: " + Arrays.toString(resultArray));
+            Assert.assertArrayEquals(expectedArray, resultArray);
             System.out.println("everything is ok");
         } catch (NegativeNumberException ex) {
             System.out.println(ex.getMessage());
@@ -79,6 +79,8 @@ public class SortingTest {
                 new CountingSort(),
                 new RadixSort(),
                 new QuickSort(),
-                new MergeSort());
+                new MergeSort(),
+                new HeapSort()
+        );
     }
 }
